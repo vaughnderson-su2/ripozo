@@ -188,14 +188,17 @@ class DateTimeField(IField):
         :return: The parse datetime object
         :rtype: datetime
         """
+        obj = translate_iterable_to_single(obj)
         if isinstance(obj, datetime):
             return obj
+        
         obj = obj.strip()
         for date_format in self.valid_formats:
             try:
                 return datetime.strptime(obj, date_format)
             except ValueError:
                 continue
+            
         raise TranslationException(self.error_message or
                                    'The object ({0}) could not be parsed as a datetime '
                                    'string using the formats {1}'.format(obj, self.valid_formats))
