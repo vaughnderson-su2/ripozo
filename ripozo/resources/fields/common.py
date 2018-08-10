@@ -193,6 +193,10 @@ class DateTimeField(IField):
             return obj
         
         obj = obj.strip()
+
+        if (len(obj) == 0):
+            return None
+
         for date_format in self.valid_formats:
             try:
                 return datetime.strptime(obj, date_format)
