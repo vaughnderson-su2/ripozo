@@ -67,6 +67,9 @@ class UtilitiesTestCase(unittest2.TestCase):
         url = join_url_parts('/', '/another')
         self.assertEqual('/another', url)
 
+        url = join_url_parts('something/','/else/')
+        self.assertEqual('something/else/', url)
+
         url = join_url_parts('/', '/')
         self.assertEqual('/', url)
 
