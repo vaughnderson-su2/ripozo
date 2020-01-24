@@ -18,7 +18,7 @@ class RequestContainer(object):
     and no property is guaranteed.
     """
 
-    def __init__(self, url_params=None, query_args=None, body_args=None, headers=None, method=None):
+    def __init__(self, url_params=None, query_args=None, body_args=None, headers=None, files=None, method=None):
         """
         Create a new request container.  Typically this is constructed
         in the dispatcher.
@@ -37,6 +37,7 @@ class RequestContainer(object):
         self._query_args = query_args or {}
         self._body_args = body_args or {}
         self._headers = headers or {}
+        self._files = files or {}
         self.method = method
 
     @property
@@ -58,6 +59,14 @@ class RequestContainer(object):
         :rtype: dict
         """
         return self._query_args.copy()
+
+    @property
+    def files(self):
+        """
+        :return: A copy of the files attached to the request
+        :rtype: dict
+        """
+        return self._files.copy()
 
     @query_args.setter
     def query_args(self, value):

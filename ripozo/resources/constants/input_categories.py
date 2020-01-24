@@ -10,3 +10,4 @@ from __future__ import unicode_literals
 QUERY_ARGS = 'query_args'
 BODY_ARGS = 'body_args'
 URL_PARAMS = 'url_params'
+FILES      = 'files'
